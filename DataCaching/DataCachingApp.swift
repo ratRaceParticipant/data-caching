@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct DataCachingApp: App {
+    @StateObject var photoServiceRepository: PhotoServiceRepository = PhotoServiceRepository()
+    @StateObject var networkMonitor: NetworkMonitor = NetworkMonitor()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PhotoListView()
         }
+        .environmentObject(photoServiceRepository)
+        .environmentObject(networkMonitor)
     }
 }
